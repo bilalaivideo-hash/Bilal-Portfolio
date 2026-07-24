@@ -162,20 +162,34 @@ input,textarea{ font-family: inherit; }
    LOADER
 ============================================ */
 #loader{
-  position: fixed; inset:0; z-index: 999;
+  position: fixed;
+  inset:0;
+  z-index: 999;
   background: var(--bg);
-  display:flex; align-items:center; justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   transition: opacity .6s var(--ease), visibility .6s var(--ease);
 }
-#loader.done{ opacity:0; visibility:hidden; }
-.loader-mark{
-  font-family: var(--font-display); font-weight:700; font-size: 1.4rem;
-  letter-spacing: 0.05em;
-  background: var(--grad-primary);
-  -webkit-background-clip:text; background-clip:text; color:transparent;
+
+#loader.done{
+  opacity:0;
+  visibility:hidden;
+}
+
+/* LOGO */
+.loader-logo{
+  width: 90px;
+  height: auto;
+  filter: drop-shadow(0 0 12px #6366f1);
   animation: pulse-mark 1s ease-in-out infinite;
 }
-@keyframes pulse-mark{ 0%,100%{ opacity:0.4; transform: scale(0.96);} 50%{ opacity:1; transform: scale(1);} }
+
+/* EXISTING ANIMATION */
+@keyframes pulse-mark{
+  0%,100%{ opacity:0.4; transform: scale(0.96);}
+  50%{ opacity:1; transform: scale(1);}
+}
 
 /* ============================================
    NAVBAR
