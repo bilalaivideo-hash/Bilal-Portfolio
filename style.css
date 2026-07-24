@@ -516,3 +516,12 @@ html[data-theme="light"] .i-moon{ display:block; }
   .hero-stats{ flex-wrap: wrap; gap: 28px; }
   .section-inner{ padding: 90px 22px; }
 }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo img {
+  width: 40px;
+}
