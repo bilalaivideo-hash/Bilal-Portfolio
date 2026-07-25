@@ -10,19 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('load', () => {
     setTimeout(() => loader && loader.classList.add('done'), 300);
   });
-  // Fallback in case 'load' already fired
-  setTimeout(() => loader && loader.classList.add('done'), 1500);
+  // Fallback in case 'load' already fired before this script ran
+  setTimeout(() => loader && loader.classList.add('done'), 1800);
 
   /* ---------- Footer year ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---------- Theme toggle (persists via in-memory state) ---------- */
+  /* ---------- Theme toggle ---------- */
   const root = document.documentElement;
   const themeToggle = document.getElementById('themeToggle');
-  let theme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'dark' : 'dark';
-  // Default to dark regardless of system preference, per design brief.
-  root.setAttribute('data-theme', 'dark');
+  root.setAttribute('data-theme', 'dark'); // dark by default, per design brief
 
   themeToggle && themeToggle.addEventListener('click', () => {
     const current = root.getAttribute('data-theme');
@@ -54,6 +52,28 @@ document.addEventListener('DOMContentLoaded', () => {
       menuToggle.setAttribute('aria-expanded', 'false');
     });
   });
+
+  /* ---------- Active nav link on scroll ---------- */
+  const navAnchors = document.querySelectorAll('[data-nav]');
+  const sections = Array.from(navAnchors)
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  if ('IntersectionObserver' in window && sections.length) {
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = '#' + entry.target.id;
+        const link = document.querySelector(`[data-nav][href="${id}"]`);
+        if (!link) return;
+        if (entry.isIntersecting) {
+          navAnchors.forEach(a => a.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    }, { threshold: 0.4, rootMargin: '-80px 0px -40% 0px' });
+
+    sections.forEach(sec => navObserver.observe(sec));
+  }
 
   /* ---------- Cursor glow ---------- */
   const glow = document.getElementById('cursorGlow');
