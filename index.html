@@ -14,13 +14,16 @@
 <meta property="og:title" content="Muhammad Bilal — Shopify Developer & Digital Brand Builder">
 <meta property="og:description" content="High-converting Shopify stores, SEO, social media marketing and AI-powered web development.">
 <meta property="og:site_name" content="Muhammad Bilal | Pioneer Digital Studio">
+<meta property="og:image" content="logo.png">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Muhammad Bilal — Shopify Developer & Digital Brand Builder">
 <meta name="twitter:description" content="High-converting Shopify stores, SEO, social media marketing and AI-powered web development.">
 
-<link rel="icon" href="assets/images/favicon.png?v=2">
+<!-- 🔧 REPLACE: point this at your real favicon if different from logo.png -->
+<link rel="icon" href="logo.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -34,19 +37,23 @@
   "@type": "Person",
   "name": "Muhammad Bilal",
   "jobTitle": "Shopify Developer, Social Media Marketer, AI Web Developer",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "Pioneer Digital Studio"
-  },
+  "worksFor": { "@type": "Organization", "name": "Pioneer Digital Studio" },
   "sameAs": []
 }
 </script>
 </head>
 <body>
 
-<!-- Loader -->
+<!-- ============================================
+     LOADER — uses your logo.png, pulses, then fades out
+     🔧 REPLACE: nothing needed here if logo.png sits next to index.html
+============================================ -->
 <div id="loader" aria-hidden="true">
-  <img src="favicon.png" alt="logo" class="loader-logo">
+  <div class="loader-badge">
+    <img src="logo.png" alt="Muhammad Bilal logo" class="loader-logo"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <span class="loader-fallback">MB</span>
+  </div>
 </div>
 
 <div class="aurora" aria-hidden="true">
@@ -57,20 +64,22 @@
 <div class="grain" aria-hidden="true"></div>
 <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-<!-- Navbar -->
+<!-- ============================================
+     NAVBAR — logo anchor bug from the live site fixed (was <a> nested in <a>)
+============================================ -->
 <header class="navbar" id="navbar">
   <nav class="nav-inner">
-<a href="#hero" class="logo">
-  <a href="#hero" class="logo">
-  <img src="assets/images/logo.png" alt="logo">
-  <span>Bilal</span>
-</a>
+    <a href="#hero" class="logo">
+      <img src="logo.png" alt="Muhammad Bilal logo" class="logo-img"
+           onerror="this.style.display='none';">
+      <span>Bilal<span class="dot">.</span></span>
+    </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#why">Why Me</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about" data-nav>About</a></li>
+      <li><a href="#services" data-nav>Services</a></li>
+      <li><a href="#why" data-nav>Why Me</a></li>
+      <li><a href="#work" data-nav>Work</a></li>
+      <li><a href="#contact" data-nav>Contact</a></li>
     </ul>
     <div class="nav-actions">
       <button id="themeToggle" class="icon-btn" aria-label="Toggle light and dark theme">
@@ -84,41 +93,72 @@
     </button>
   </nav>
 </header>
+
 <main>
 
-  <!-- HERO -->
+  <!-- ============================================
+       HERO — now two-column so there's no dead space:
+       left = copy + CTAs, right = branded visual panel
+  ============================================ -->
   <section class="hero" id="hero">
     <div class="hero-inner">
-      <p class="eyebrow reveal">Pioneer Digital Studio · 2+ Years Building Online</p>
-      <h1 class="hero-title">
-        <span class="reveal">Hi, I'm <span class="grad-text">Muhammad Bilal</span></span>
-        <span class="reveal" style="--d:1">I build high-converting</span>
-        <span class="reveal" style="--d:2"><span class="grad-text-2">Shopify stores</span> & digital brands</span>
-      </h1>
-      <p class="hero-sub reveal" style="--d:3">
-        Shopify Developer · Social Media Marketer · Professional AI Web Developer —
-        turning ideas into stores and brands that actually convert.
-      </p>
-      <div class="hero-actions reveal" style="--d:4">
-        <a href="#work" class="btn btn-primary">View My Work</a>
-        <a href="#contact" class="btn btn-ghost">Contact Me</a>
-        <a href="https://wa.me/923069151521" target="_blank" rel="noopener" class="btn btn-whatsapp">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.8.7.8.2 1.5.2 2 .1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.5-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
-          Order on WhatsApp
-        </a>
+
+      <div class="hero-copy">
+        <p class="eyebrow reveal">Pioneer Digital Studio · 2+ Years Building Online</p>
+        <h1 class="hero-title">
+          <span class="reveal">Hi, I'm <span class="grad-text">Muhammad Bilal</span></span>
+          <span class="reveal" style="--d:1">I build high-converting</span>
+          <span class="reveal" style="--d:2"><span class="grad-text-2">Shopify stores</span> & digital brands</span>
+        </h1>
+        <p class="hero-sub reveal" style="--d:3">
+          Shopify Developer · Social Media Marketer · Professional AI Web Developer —
+          turning ideas into stores and brands that actually convert.
+        </p>
+        <div class="hero-actions reveal" style="--d:4">
+          <a href="#work" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-ghost">Contact Me</a>
+          <a href="https://wa.me/923069151521" target="_blank" rel="noopener" class="btn btn-whatsapp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.8.7.8.2 1.5.2 2 .1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.5-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+            Order on WhatsApp
+          </a>
+        </div>
+        <div class="hero-stats reveal" style="--d:5">
+          <div><span class="stat-num">2+</span><span class="stat-label">Years Experience</span></div>
+          <div><span class="stat-num">Shopify</span><span class="stat-label">Core Specialty</span></div>
+          <div><span class="stat-num">AI</span><span class="stat-label">Powered Builds</span></div>
+        </div>
       </div>
-      <div class="hero-stats reveal" style="--d:5">
-        <div><span class="stat-num">2+</span><span class="stat-label">Years Experience</span></div>
-        <div><span class="stat-num">Shopify</span><span class="stat-label">Core Specialty</span></div>
-        <div><span class="stat-num">AI</span><span class="stat-label">Powered Builds</span></div>
+
+      <!-- Branded visual panel: fills the right side, reinforces identity instantly -->
+      <div class="hero-visual reveal" style="--d:2">
+        <div class="hero-card">
+          <div class="hero-card-glow"></div>
+          <img src="logo.png" alt="Muhammad Bilal" class="hero-card-logo"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="hero-card-fallback">MB</div>
+          <p class="hero-card-name">Muhammad Bilal</p>
+          <p class="hero-card-role">Shopify Developer</p>
+        </div>
+
+        <span class="floating-badge fb-1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2l1.5 3h9L18 2"/><path d="M3.5 8.5h17l-1.4 11.2a2 2 0 0 1-2 1.8H6.9a2 2 0 0 1-2-1.8L3.5 8.5Z"/></svg>
+          Shopify Partner
+        </span>
+        <span class="floating-badge fb-2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-7-7 18-2.5-7.5L3 11Z"/></svg>
+          Meta & Google Ads
+        </span>
+        <span class="floating-badge fb-3">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+          AI Web Dev
+        </span>
       </div>
+
     </div>
-    <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
-      <span></span>
-    </a>
+    <a href="#about" class="scroll-cue" aria-label="Scroll to About section"><span></span></a>
   </section>
 
-  <!-- ABOUT -->
+  <!-- ============================================ ABOUT ============================================ -->
   <section class="about" id="about">
     <div class="section-inner about-grid">
       <div class="section-head reveal">
@@ -145,7 +185,7 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
+  <!-- ============================================ SERVICES ============================================ -->
   <section class="services" id="services">
     <div class="section-inner">
       <div class="section-head reveal center">
@@ -206,7 +246,7 @@
     </div>
   </section>
 
-  <!-- WHY CHOOSE ME -->
+  <!-- ============================================ WHY CHOOSE ME ============================================ -->
   <section class="why" id="why">
     <div class="section-inner">
       <div class="section-head reveal center">
@@ -238,7 +278,7 @@
     </div>
   </section>
 
-  <!-- PORTFOLIO -->
+  <!-- ============================================ PORTFOLIO ============================================ -->
   <section class="work" id="work">
     <div class="section-inner">
       <div class="section-head reveal center">
@@ -248,7 +288,10 @@
       <div class="work-grid">
 
         <article class="work-card reveal">
-          <div class="work-thumb wt-1"></div>
+          <div class="work-thumb wt-1">
+            <span class="work-tag">Shopify</span>
+            <a href="#contact" class="work-hover-btn">View Project</a>
+          </div>
           <div class="work-body">
             <h3>Modern Shopify Fashion Store</h3>
             <p>Full store build with custom theme sections, fast checkout, and mobile-first layout.</p>
@@ -257,7 +300,10 @@
         </article>
 
         <article class="work-card reveal">
-          <div class="work-thumb wt-2"></div>
+          <div class="work-thumb wt-2">
+            <span class="work-tag">Marketing</span>
+            <a href="#contact" class="work-hover-btn">View Project</a>
+          </div>
           <div class="work-body">
             <h3>Beauty Brand Social Campaign</h3>
             <p>Content strategy + Meta Ads rollout that grew engagement and drove store traffic.</p>
@@ -266,7 +312,10 @@
         </article>
 
         <article class="work-card reveal">
-          <div class="work-thumb wt-3"></div>
+          <div class="work-thumb wt-3">
+            <span class="work-tag">SEO</span>
+            <a href="#contact" class="work-hover-btn">View Project</a>
+          </div>
           <div class="work-body">
             <h3>SEO Overhaul — Home Goods Store</h3>
             <p>Technical SEO cleanup and content structure that improved Shopify search visibility.</p>
@@ -275,7 +324,10 @@
         </article>
 
         <article class="work-card reveal">
-          <div class="work-thumb wt-4"></div>
+          <div class="work-thumb wt-4">
+            <span class="work-tag">AI Web Dev</span>
+            <a href="#contact" class="work-hover-btn">View Project</a>
+          </div>
           <div class="work-body">
             <h3>AI-Assisted Landing Page</h3>
             <p>Lightweight custom-coded landing page built with HTML/CSS/JS and AI-assisted workflow.</p>
@@ -287,7 +339,7 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- ============================================ CONTACT ============================================ -->
   <section class="contact" id="contact">
     <div class="section-inner contact-grid">
       <div class="contact-head reveal">
