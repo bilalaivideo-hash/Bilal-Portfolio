@@ -75,6 +75,38 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(sec => navObserver.observe(sec));
   }
 
+  /* ---------- Hero card: mouse-reactive tilt + gentle float ---------- */
+  const heroVisual = document.querySelector('.hero-visual');
+  const heroCardEl = document.querySelector('.hero-card');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (heroVisual && heroCardEl && !prefersReducedMotion) {
+    let tiltX = 0, tiltY = 0, targetTiltX = 0, targetTiltY = 0;
+    const start = performance.now();
+
+    const floatLoop = (now) => {
+      const t = (now - start) / 1000;
+      const bob = Math.sin(t * 1.1) * 8;
+      tiltX += (targetTiltX - tiltX) * 0.08;
+      tiltY += (targetTiltY - tiltY) * 0.08;
+      heroCardEl.style.transform = `translateY(${bob}px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+      requestAnimationFrame(floatLoop);
+    };
+    requestAnimationFrame(floatLoop);
+
+    heroVisual.addEventListener('mousemove', (e) => {
+      const rect = heroVisual.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width - 0.5;
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
+      targetTiltY = px * 14;
+      targetTiltX = -py * 14;
+    }, { passive: true });
+
+    heroVisual.addEventListener('mouseleave', () => {
+      targetTiltX = 0; targetTiltY = 0;
+    });
+  }
+
   /* ---------- Custom cursor: instant dot + lagging glow ---------- */
   const glow = document.getElementById('cursorGlow');
   const dot = document.getElementById('cursorDot');
