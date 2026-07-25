@@ -75,14 +75,88 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(sec => navObserver.observe(sec));
   }
 
-  /* ---------- Cursor glow ---------- */
+  /* ---------- Custom cursor: instant dot + lagging glow ---------- */
   const glow = document.getElementById('cursorGlow');
-  if (glow && window.matchMedia('(pointer: fine)').matches) {
+  const dot = document.getElementById('cursorDot');
+  const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+
+  if (isFinePointer && glow && dot) {
+    let mouseX = 0, mouseY = 0, glowX = 0, glowY = 0;
+
     window.addEventListener('mousemove', (e) => {
-      glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%,-50%)`;
+      mouseX = e.clientX; mouseY = e.clientY;
+      dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%,-50%)`;
     }, { passive: true });
-  } else if (glow) {
-    glow.style.display = 'none';
+
+    // Glow trails the dot slightly for a softer, premium feel
+    const animateGlow = () => {
+      glowX += (mouseX - glowX) * 0.12;
+      glowY += (mouseY - glowY) * 0.12;
+      glow.style.transform = `translate(${glowX}px, ${glowY}px) translate(-50%,-50%)`;
+      requestAnimationFrame(animateGlow);
+    };
+    requestAnimationFrame(animateGlow);
+
+    // Scale cursor up over interactive elements
+    document.querySelectorAll('a, button, .card, .work-card, .chip-card').forEach(el => {
+      el.addEventListener('mouseenter', () => dot.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => dot.classList.remove('hovering'));
+    });
+  } else {
+    if (glow) glow.style.display = 'none';
+    if (dot) dot.style.display = 'none';
+  }
+
+  /* ---------- Typing effect for hero role ---------- */
+  const typedEl = document.getElementById('typedRole');
+  if (typedEl) {
+    const roles = ['Shopify Developer', 'Social Media Marketer', 'AI Web Developer'];
+    let roleIndex = 0, charIndex = roles[0].length, deleting = false;
+
+    const tick = () => {
+      const current = roles[roleIndex];
+      if (!deleting) {
+        charIndex++;
+        if (charIndex > current.length) { deleting = true; setTimeout(tick, 1400); return; }
+      } else {
+        charIndex--;
+        if (charIndex < 0) { deleting = false; roleIndex = (roleIndex + 1) % roles.length; charIndex = 0; }
+      }
+      typedEl.textContent = current.slice(0, charIndex);
+      setTimeout(tick, deleting ? 40 : 70);
+    };
+    setTimeout(tick, 1200);
+  }
+
+  /* ---------- Button ripple on click ---------- */
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      const rect = this.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      const size = Math.max(rect.width, rect.height);
+      ripple.className = 'btn-ripple';
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+      ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+      this.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 650);
+    });
+  });
+
+  /* ---------- Subtle hero parallax on the ambient orbs ---------- */
+  const hero = document.getElementById('hero');
+  const orbs = document.querySelectorAll('.orb');
+  if (hero && orbs.length && isFinePointer) {
+    hero.addEventListener('mousemove', (e) => {
+      const { innerWidth: w, innerHeight: h } = window;
+      const dx = (e.clientX / w - 0.5) * 24;
+      const dy = (e.clientY / h - 0.5) * 24;
+      orbs.forEach((orb, i) => {
+        const factor = (i + 1) * 0.6;
+        orb.style.marginLeft = `${dx * factor}px`;
+        orb.style.marginTop = `${dy * factor}px`;
+      });
+    }, { passive: true });
   }
 
   /* ---------- Scroll reveal ---------- */
