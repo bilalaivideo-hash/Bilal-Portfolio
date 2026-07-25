@@ -198,7 +198,15 @@ input,textarea{ font-family: inherit; }
   font-family: var(--font-display); font-weight:700; font-size: 1.2rem; letter-spacing: -0.02em;
 }
 .logo-img{
-  width: 32px; height: 32px; object-fit: contain; border-radius: 8px;
+  width: 40px; height: 40px; object-fit: contain; border-radius: 9px;
+  transition: transform .3s var(--ease);
+}
+.logo:hover .logo-img{ transform: scale(1.06) rotate(-2deg); }
+.logo-fallback{
+  display:none; width: 40px; height: 40px; border-radius: 9px;
+  align-items:center; justify-content:center;
+  font-family: var(--font-display); font-weight:700; font-size: 0.85rem;
+  background: var(--grad-primary); color:#fff;
 }
 .logo .dot{ color: var(--orange); }
 
@@ -316,62 +324,73 @@ html[data-theme="light"] .i-moon{ display:block; }
 @keyframes cue{ 0%{ opacity:1; transform: translateY(0);} 70%{opacity:0; transform: translateY(14px);} 100%{opacity:0;} }
 
 /* --- Hero visual panel: fills the right column, reinforces brand identity --- */
-.hero-visual{ position: relative; display:flex; align-items:center; justify-content:center; min-height: 360px; }
+.hero-visual{ position: relative; display:flex; align-items:center; justify-content:center; min-height: 360px; perspective: 1200px; }
 
 .hero-card{
-  position: relative; width: 260px; padding: 40px 28px;
+  position: relative; width: 264px; padding: 42px 30px;
   display:flex; flex-direction:column; align-items:center; gap: 6px; text-align:center;
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-l);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5);
-  animation: card-float 5s ease-in-out infinite;
+  background: var(--surface); border-radius: var(--radius-l);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 40px 80px -24px rgba(0,0,0,0.6), 0 0 60px -20px rgba(139,92,246,0.25);
+  transition: transform .1s ease-out;
+  will-change: transform;
+  transform-style: preserve-3d;
 }
-@keyframes card-float{ 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-10px);} }
+/* Rotating gradient border — a slow "chasing light" ring around the whole card */
+.hero-card::before{
+  content:''; position:absolute; inset:-1.5px; border-radius: inherit; padding: 1.5px;
+  background: conic-gradient(from 0deg, var(--violet), var(--blue), var(--orange), var(--violet));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: border-spin 7s linear infinite;
+  opacity: 0.85;
+}
+@keyframes border-spin{ to{ transform: rotate(360deg); } }
 
 .hero-card-glow{
-  position:absolute; inset: -30%; z-index:-1; border-radius: 50%;
-  background: radial-gradient(circle, rgba(139,92,246,0.35), transparent 70%);
-  filter: blur(30px);
+  position:absolute; inset: -35%; z-index:-1; border-radius: 50%;
+  background: radial-gradient(circle, rgba(139,92,246,0.4), transparent 70%);
+  filter: blur(34px);
+  animation: glow-breathe 4s ease-in-out infinite;
 }
-/* --- Profile photo: gradient ring frame + pulsing scan ring --- */
+@keyframes glow-breathe{ 0%,100%{ opacity:0.7; } 50%{ opacity:1; } }
+
+/* --- Profile photo: spinning conic ring, matches the loader's signature look --- */
 .hero-photo-frame{
-  position: relative; width: 128px; height: 128px; margin-bottom: 18px;
+  position: relative; width: 132px; height: 132px; margin-bottom: 20px;
   display:flex; align-items:center; justify-content:center;
 }
 .hero-photo{
-  width: 116px; height: 116px; object-fit: cover; border-radius: 50%;
+  width: 114px; height: 114px; object-fit: cover; border-radius: 50%;
   position: relative; z-index: 2;
   border: 3px solid var(--bg-alt);
-  box-shadow: 0 0 0 3px transparent;
-  background:
-    linear-gradient(var(--bg-alt), var(--bg-alt)) padding-box,
-    var(--grad-primary) border-box;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.35);
+  transition: transform .4s var(--ease);
 }
+.hero-card:hover .hero-photo{ transform: scale(1.04); }
 .hero-photo-fallback{
-  display:none; width: 116px; height: 116px; border-radius: 50%;
+  display:none; width: 114px; height: 114px; border-radius: 50%;
   position: relative; z-index: 2; align-items:center; justify-content:center;
   font-family: var(--font-display); font-weight:700; font-size: 1.6rem;
   background: var(--grad-primary); color:#fff; border: 3px solid var(--bg-alt);
 }
 .hero-photo-ring{
-  position:absolute; inset: -8px; border-radius: 50%; z-index: 1;
-  border: 2px solid transparent;
-  background: var(--grad-primary) border-box;
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  position:absolute; inset: 0; border-radius: 50%; z-index: 1; padding: 3px;
+  background: conic-gradient(from 0deg, var(--violet), var(--blue), var(--orange), var(--violet));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
-  animation: ring-pulse 2.6s ease-in-out infinite;
+  animation: ring-spin 3.2s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(139,92,246,0.5));
 }
-@keyframes ring-pulse{
-  0%,100%{ transform: scale(1); opacity: 0.9; }
-  50%{ transform: scale(1.08); opacity: 0.4; }
-}
+@keyframes ring-spin{ to{ transform: rotate(360deg); } }
 
 /* --- Availability badge --- */
 .available-badge{
   display:inline-flex; align-items:center; gap: 8px;
   font-family: var(--font-mono); font-size: 0.72rem;
-  padding: 6px 14px; border-radius: 999px; margin-bottom: 14px;
-  background: var(--surface-strong); border: 1px solid var(--border); color: var(--text-muted);
+  padding: 7px 15px; border-radius: 999px; margin-bottom: 16px;
+  background: linear-gradient(180deg, rgba(45,214,107,0.12), rgba(45,214,107,0.04));
+  border: 1px solid rgba(45,214,107,0.3); color: var(--text);
 }
 .available-dot{
   width: 7px; height: 7px; border-radius: 50%; background: #2dd66b;
@@ -380,8 +399,8 @@ html[data-theme="light"] .i-moon{ display:block; }
 }
 @keyframes dot-pulse{ 0%,100%{ opacity: 1; transform: scale(1);} 50%{ opacity: 0.5; transform: scale(0.8);} }
 
-.hero-card-name{ font-family: var(--font-display); font-weight:600; font-size: 1.05rem; }
-.hero-card-role{ font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); }
+.hero-card-name{ font-family: var(--font-display); font-weight:600; font-size: 1.08rem; }
+.hero-card-role{ font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-muted); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 2px; }
 
 .floating-badge{
   position:absolute; display:flex; align-items:center; gap: 8px;
@@ -389,12 +408,17 @@ html[data-theme="light"] .i-moon{ display:block; }
   padding: 10px 16px; border-radius: 999px;
   background: var(--surface-strong); border: 1px solid var(--border);
   backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 12px 30px -12px rgba(0,0,0,0.5);
+  box-shadow: 0 12px 30px -12px rgba(0,0,0,0.55);
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
 }
-.floating-badge svg{ color: var(--violet); flex-shrink:0; }
+.floating-badge:hover{ transform: scale(1.06) !important; box-shadow: 0 16px 34px -10px rgba(139,92,246,0.4); }
+.floating-badge svg{ flex-shrink:0; }
 .fb-1{ top: 4%; left: -6%; animation: badge-float-1 6s ease-in-out infinite; }
+.fb-1 svg{ color: var(--violet); }
 .fb-2{ bottom: 12%; right: -10%; animation: badge-float-2 7s ease-in-out infinite; }
+.fb-2 svg{ color: var(--orange); }
 .fb-3{ top: 46%; right: -14%; animation: badge-float-1 8s ease-in-out infinite; }
+.fb-3 svg{ color: var(--blue); }
 @keyframes badge-float-1{ 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-12px);} }
 @keyframes badge-float-2{ 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(12px);} }
 
