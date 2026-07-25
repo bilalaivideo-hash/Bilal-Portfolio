@@ -61,6 +61,7 @@
 </div>
 <div class="grain" aria-hidden="true"></div>
 <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 
 <!-- ============================================
      NAVBAR — logo anchor bug from the live site fixed (was <a> nested in <a>)
@@ -108,17 +109,39 @@
           <span class="reveal" style="--d:2"><span class="grad-text-2">Shopify stores</span> & digital brands</span>
         </h1>
         <p class="hero-sub reveal" style="--d:3">
-          Shopify Developer · Social Media Marketer · Professional AI Web Developer —
-          turning ideas into stores and brands that actually convert.
+          <span id="typedRole">Shopify Developer</span><span class="typed-cursor" aria-hidden="true"></span>
+          <br>Turning ideas into stores and brands that actually convert.
         </p>
         <div class="hero-actions reveal" style="--d:4">
-          <a href="#work" class="btn btn-primary">View My Work</a>
-          <a href="#contact" class="btn btn-ghost">Contact Me</a>
+          <a href="#contact" class="btn btn-primary">Hire Me</a>
+          <a href="#work" class="btn btn-ghost">View Portfolio</a>
           <a href="https://wa.me/923069151521" target="_blank" rel="noopener" class="btn btn-whatsapp">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.8.7.8.2 1.5.2 2 .1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.5-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
             Order on WhatsApp
           </a>
         </div>
+
+        <!-- Compact social + freelance row: small icons per brief -->
+        <div class="hero-social reveal" style="--d:4">
+          <a href="https://wa.me/923069151521" target="_blank" rel="noopener" class="icon-pill" aria-label="WhatsApp" data-tip="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.8.7.8.2 1.5.2 2 .1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.5-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+          </a>
+          <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="icon-pill" aria-label="GitHub" data-tip="GitHub">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.3-3.2-.1-.3-.6-1.6.1-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6.2 0c2.4-1.5 3.4-1.2 3.4-1.2.7 1.6.2 2.9.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.7 5.6-5.4 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener" class="icon-pill" aria-label="LinkedIn" data-tip="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 13v4"/></svg>
+          </a>
+          <a href="https://instagram.com/yourusername" target="_blank" rel="noopener" class="icon-pill" aria-label="Instagram" data-tip="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+          <a href="https://facebook.com/yourusername" target="_blank" rel="noopener" class="icon-pill" aria-label="Facebook" data-tip="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 9h3V6h-3a4 4 0 0 0-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1Z"/></svg>
+          </a>
+          <a href="https://www.upwork.com/freelancers/~01e56062e2fbabe256" target="_blank" rel="noopener" class="icon-pill icon-pill-mono" aria-label="Upwork" data-tip="Upwork" style="--mono-color:#14a800;">Up</a>
+          <a href="https://www.fiverr.com/bilalirfan880" target="_blank" rel="noopener" class="icon-pill icon-pill-mono" aria-label="Fiverr" data-tip="Fiverr" style="--mono-color:#1dbf73;">Fi</a>
+        </div>
+
         <div class="hero-stats reveal" style="--d:5">
           <div><span class="stat-num">2+</span><span class="stat-label">Years Experience</span></div>
           <div><span class="stat-num">Shopify</span><span class="stat-label">Core Specialty</span></div>
@@ -140,7 +163,7 @@
 
           <span class="available-badge">
             <span class="available-dot"></span>
-            Available for work
+            Available for Freelance
           </span>
 
           <p class="hero-card-name">Muhammad Bilal</p>
@@ -366,14 +389,35 @@
         </div>
 
         <div class="social-links">
-          <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <a href="https://github.com/yourusername" aria-label="GitHub" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.3-3.2-.1-.3-.6-1.6.1-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6.2 0c2.4-1.5 3.4-1.2 3.4-1.2.7 1.6.2 2.9.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.7 5.6-5.4 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
+          </a>
+          <a href="https://instagram.com/yourusername" aria-label="Instagram" target="_blank" rel="noopener">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
           </a>
-          <a href="#" aria-label="Facebook" target="_blank" rel="noopener">
+          <a href="https://facebook.com/yourusername" aria-label="Facebook" target="_blank" rel="noopener">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 9h3V6h-3a4 4 0 0 0-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1Z"/></svg>
           </a>
-          <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <a href="https://linkedin.com/in/yourusername" aria-label="LinkedIn" target="_blank" rel="noopener">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 13v4"/></svg>
+          </a>
+        </div>
+
+        <!-- Freelance platforms: high priority per brief -->
+        <div class="freelance-strip">
+          <a href="https://www.upwork.com/freelancers/~01e56062e2fbabe256" target="_blank" rel="noopener" class="freelance-card" style="--brand:#14a800;">
+            <span class="freelance-mono">Up</span>
+            <span class="freelance-info">
+              <strong>Upwork</strong>
+              <small>View Profile →</small>
+            </span>
+          </a>
+          <a href="https://www.fiverr.com/bilalirfan880" target="_blank" rel="noopener" class="freelance-card" style="--brand:#1dbf73;">
+            <span class="freelance-mono">Fi</span>
+            <span class="freelance-info">
+              <strong>Fiverr</strong>
+              <small>Top Rated Seller</small>
+            </span>
           </a>
         </div>
       </div>
@@ -402,6 +446,25 @@
 <footer class="footer">
   <div class="section-inner footer-inner">
     <span>© <span id="year"></span> Muhammad Bilal — Pioneer Digital Studio</span>
+    <div class="footer-social">
+      <a href="https://wa.me/923069151521" target="_blank" rel="noopener" class="icon-pill" aria-label="WhatsApp">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.8.7.8.2 1.5.2 2 .1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.5-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+      </a>
+      <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="icon-pill" aria-label="GitHub">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.3-3.2-.1-.3-.6-1.6.1-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6.2 0c2.4-1.5 3.4-1.2 3.4-1.2.7 1.6.2 2.9.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.7 5.6-5.4 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener" class="icon-pill" aria-label="LinkedIn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 13v4"/></svg>
+      </a>
+      <a href="https://instagram.com/yourusername" target="_blank" rel="noopener" class="icon-pill" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      </a>
+      <a href="https://facebook.com/yourusername" target="_blank" rel="noopener" class="icon-pill" aria-label="Facebook">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 9h3V6h-3a4 4 0 0 0-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1Z"/></svg>
+      </a>
+      <a href="https://www.upwork.com/freelancers/~01e56062e2fbabe256" target="_blank" rel="noopener" class="icon-pill icon-pill-mono" aria-label="Upwork" style="--mono-color:#14a800;">Up</a>
+      <a href="https://www.fiverr.com/bilalirfan880" target="_blank" rel="noopener" class="icon-pill icon-pill-mono" aria-label="Fiverr" style="--mono-color:#1dbf73;">Fi</a>
+    </div>
     <span class="footer-tag">Designed & built with intent.</span>
   </div>
 </footer>
