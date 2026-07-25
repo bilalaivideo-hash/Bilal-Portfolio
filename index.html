@@ -14,15 +14,14 @@
 <meta property="og:title" content="Muhammad Bilal — Shopify Developer & Digital Brand Builder">
 <meta property="og:description" content="High-converting Shopify stores, SEO, social media marketing and AI-powered web development.">
 <meta property="og:site_name" content="Muhammad Bilal | Pioneer Digital Studio">
-<meta property="og:image" content="logo.png">
+<meta property="og:image" content="assets/images/logo.png">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Muhammad Bilal — Shopify Developer & Digital Brand Builder">
 <meta name="twitter:description" content="High-converting Shopify stores, SEO, social media marketing and AI-powered web development.">
 
-<!-- 🔧 REPLACE: point this at your real favicon if different from logo.png -->
-<link rel="icon" href="logo.png">
+<link rel="icon" href="assets/images/favicon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,12 +44,11 @@
 <body>
 
 <!-- ============================================
-     LOADER — uses your logo.png, pulses, then fades out
-     🔧 REPLACE: nothing needed here if logo.png sits next to index.html
+     LOADER — uses your logo (assets/images/logo.png), pulses, then fades out
 ============================================ -->
 <div id="loader" aria-hidden="true">
   <div class="loader-badge">
-    <img src="logo.png" alt="Muhammad Bilal logo" class="loader-logo"
+    <img src="assets/images/logo.png" alt="Muhammad Bilal logo" class="loader-logo"
          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
     <span class="loader-fallback">MB</span>
   </div>
@@ -70,15 +68,14 @@
 <header class="navbar" id="navbar">
   <nav class="nav-inner">
     <a href="#hero" class="logo">
-      <img src="logo.png" alt="Muhammad Bilal logo" class="logo-img"
+      <img src="assets/images/logo.png" alt="Muhammad Bilal logo" class="logo-img"
            onerror="this.style.display='none';">
       <span>Bilal<span class="dot">.</span></span>
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about" data-nav>About</a></li>
       <li><a href="#services" data-nav>Services</a></li>
-      <li><a href="#why" data-nav>Why Me</a></li>
-      <li><a href="#work" data-nav>Work</a></li>
+      <li><a href="#work" data-nav>Portfolio</a></li>
       <li><a href="#contact" data-nav>Contact</a></li>
     </ul>
     <div class="nav-actions">
@@ -133,9 +130,19 @@
       <div class="hero-visual reveal" style="--d:2">
         <div class="hero-card">
           <div class="hero-card-glow"></div>
-          <img src="logo.png" alt="Muhammad Bilal" class="hero-card-logo"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="hero-card-fallback">MB</div>
+
+          <div class="hero-photo-frame">
+            <img src="assets/images/profile.png" alt="Muhammad Bilal" class="hero-photo"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="hero-photo-fallback">MB</div>
+            <span class="hero-photo-ring"></span>
+          </div>
+
+          <span class="available-badge">
+            <span class="available-dot"></span>
+            Available for work
+          </span>
+
           <p class="hero-card-name">Muhammad Bilal</p>
           <p class="hero-card-role">Shopify Developer</p>
         </div>
